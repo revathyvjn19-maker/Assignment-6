@@ -61,23 +61,23 @@ INSERT INTO employees (employee_id, employee_name, gender, age, hire_date, desig
 
  1. Distinct Values
     
--	⦿ a query to retrieve distinct salaries from the Employees table.
+-	 a query to retrieve distinct salaries from the Employees table.
 
 **Select distinct salary from employees;**
 
  2. Alias (AS): 
 
-⦿ Provide aliases for the "age" and "salary" columns as "Employee_Age" and "Employee_Salary", respectively.
+- Provide aliases for the "age" and "salary" columns as "Employee_Age" and "Employee_Salary", respectively.
 
 **select age as Employee_Age, Salary as Employee_Salary from employees;**
 
  3. Where Clause & Operators: 
 
-⦿ Retrieve employees with a salary greater than ₹50000 and hired before 2016-01-01.
+- Retrieve employees with a salary greater than ₹50000 and hired before 2016-01-01.
 
 **select * from employees where salary >50000 and hire_date < '2016-01-01';**
 
-⦿ Find the employee whose designation is missing and fill it with "Data Scientist".
+- Find the employee whose designation is missing and fill it with "Data Scientist".
 
 **Select * from employees where designation is null;**
 
@@ -87,52 +87,52 @@ INSERT INTO employees (employee_id, employee_name, gender, age, hire_date, desig
 
 1.	ORDER BY: 
 
-⦿ Find employees sorted by department ID in ascending order and salary in descending order.
+- Find employees sorted by department ID in ascending order and salary in descending order.
 
 **select * from employees order by department_ID, salary desc;**
 
 2.	LIMIT: 
 
-⦿ Display the first 5 employees hired in the year 2018.
+- Display the first 5 employees hired in the year 2018.
 
 **select * from employees where year (hire_date) = 2018 order by hire_date asc limit 5;**
 
 
 3.	Aggregate Functions: 
 
-⦿ Calculate the sum of all salaries in the Finance department. 
+- Calculate the sum of all salaries in the Finance department. 
 
 **SELECT SUM(Salary) AS Total_Salary FROM Employees 
 inner join departments on employees.Department_ID = departments.Department_ID
 WHERE departments.Department_Name = 'Finance';**
 
-⦿ Find the minimum age among all employees. 
+- Find the minimum age among all employees. 
 
 **select min(age) as minimum_age from employees;**
 
 4.	GROUP BY  
 
-⦿ List the maximum salary for each location. 
+- List the maximum salary for each location. 
 
 **select location.location, max(employees.salary) as Maximum_salary from employees 
 inner join location  on employees.Location_ID = Location.Location_ID 
 group by Location.location;**
 
-⦿ Calculate the average salary for each designation containing the word 'Analyst'. 
+- Calculate the average salary for each designation containing the word 'Analyst'. 
 
 **Select designation, avg(salary) as average_salary from employees 
 where designation like '%analyst%' group by designation;**
 
 5.	HAVING: 
 
-⦿ Find departments with less than 3 employees.
+- Find departments with less than 3 employees.
  
 
 **select departments.department_ID, departments.department_name, count(employees.employee_ID) as total_employees from departments
 left join employees on departments.department_ID = employees.department_ID
 group by departments.department_ID, department_name  having count(employees.employee_ID)<3;**
 
-⦿ Find locations with female employees whose average age is below 30. 
+- Find locations with female employees whose average age is below 30. 
 
 **select location.location, avg(employees.age)  as Average_age from employees 
 inner join location  on employees.Location_ID = Location.Location_ID 
@@ -144,14 +144,14 @@ having avg(employees.age)<30;**
 
 1.	Inner Join: 
 
-⦿ List employee names, their designations, and department names where employees are assigned to a department. 
+- List employee names, their designations, and department names where employees are assigned to a department. 
 
 **select Employees.employee_name, employees.designation, departments.department_name from employees
 inner join departments on departments.department_ID = employees.department_ID;**
 
 2.	Left Join: 
 
-⦿ List all departments along with the total number of employees in each department, including departments with no employees. 
+- List all departments along with the total number of employees in each department, including departments with no employees. 
 
 **select departments.department_name, count(employees.employee_ID) as Total_employees from departments
 left join employees on departments.department_ID = employees.department_ID
@@ -159,7 +159,7 @@ group by departments.department_ID, departments.department_name;**
 
 3.	Right Join: 
 
-⦿ Display all locations along with the names of employees assigned to each location. If no employees are assigned to a location, display NULL for employee name.
+- Display all locations along with the names of employees assigned to each location. If no employees are assigned to a location, display NULL for employee name.
 
 **select location.location, employees.employee_name from employees
 right join location on employees.location_ID = Location.Location_ID;**
