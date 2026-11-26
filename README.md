@@ -1,0 +1,2 @@
+# Assignment-6
+Clauses and Joins 
